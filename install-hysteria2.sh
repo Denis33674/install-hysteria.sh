@@ -92,9 +92,9 @@ install_packages() {
 install_hysteria() {
   log "Installing Hysteria 2..."
   HYSTERIA_USER=root bash <(curl -fsSL https://get.hy2.sh/)
-
   command -v hysteria >/dev/null 2>&1 || fail "hysteria binary not found after installation."
-  systemctl list-unit-files | grep -q "^${SERVICE_NAME}" || fail "${SERVICE_NAME} not found after installation."
+  systemctl daemon-reload
+  systemctl cat "${SERVICE_NAME}" >/dev/null 2>&1 || fail "${SERVICE_NAME} not found after installation."
 }
 
 detect_server_ip() {
