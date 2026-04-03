@@ -352,6 +352,6 @@ main() {
   build_uri
   generate_qr
   print_result
-}
+} 
 
 main "$@"
