@@ -22,5 +22,5 @@ ss -ulnp | grep 8443
 journalctl -u hysteria-server.service -n 30 --no-pager -l
 
 
-### Повторный вывод qr кода
+### Повторный вывод QR-кода
 qrencode -t ansiutf8 "$(awk -F'"' '/^server:/{srv=$2} /^auth:/{auth=$2} /^    pinSHA256:/{pin=$2} END{print "hysteria2://" auth "@" srv "/?insecure=1&pinSHA256=" pin}' /etc/hysteria/client-example.yaml)"
