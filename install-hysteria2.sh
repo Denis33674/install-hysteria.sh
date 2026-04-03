@@ -54,7 +54,6 @@ cleanup_on_exit() {
     echo
   fi
 }
-trap cleanup_on_exit EXIT
 
 require_root() {
   [[ "${EUID}" -eq 0 ]] || fail "Run this script as root."
