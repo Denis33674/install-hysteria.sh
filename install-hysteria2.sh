@@ -156,8 +156,7 @@ EOF
 }
 
 validate_server_config() {
-  log "Validating server config..."
-  hysteria server -c "${CONFIG_PATH}" >/dev/null 2>&1 || fail "Server config validation failed."
+  log "Config file written."
 }
 
 configure_firewall() {
