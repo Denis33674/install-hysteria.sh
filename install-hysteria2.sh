@@ -39,7 +39,7 @@ fail() {
   exit 1
 }
 
-cleanup_on_error() {
+cleanup_on_exit() {
   local exit_code=$?
   if [[ $exit_code -ne 0 ]]; then
     echo
@@ -53,9 +53,8 @@ cleanup_on_error() {
     echo "ss -ulnp | grep ${HY2_PORT}"
     echo
   fi
-  exit "$exit_code"
 }
-trap cleanup_on_error ERR
+trap cleanup_on_exit EXIT
 
 require_root() {
   [[ "${EUID}" -eq 0 ]] || fail "Run this script as root."
@@ -208,6 +207,7 @@ server: "${SERVER_IP}:${HY2_PORT}"
 auth: "${HY2_PASS}"
 
 tls:
+  insecure: true
   pinSHA256: "${HY2_FINGERPRINT}"
 
 socks5:
@@ -245,7 +245,7 @@ build_uri() {
   local encoded_auth
   encoded_auth="$(urlencode "${HY2_PASS}")"
 
-  HY2_URI="hysteria2://${encoded_auth}@${SERVER_IP}:${HY2_PORT}/?pinSHA256=${HY2_FINGERPRINT}&insecure=0"
+  HY2_URI="hysteria2://${encoded_auth}@${SERVER_IP}:${HY2_PORT}/?insecure=1&pinSHA256=${HY2_FINGERPRINT}"
   export HY2_URI
 }
 
