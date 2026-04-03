@@ -299,6 +299,7 @@ server: "${SERVER_IP}:${HY2_PORT}"
 auth: "${HY2_PASS}"
 
 tls:
+  insecure: true
   pinSHA256: "${HY2_FINGERPRINT}"
 
 socks5:
