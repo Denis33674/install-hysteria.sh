@@ -12,3 +12,10 @@
 ```bash
 cat /etc/hysteria/client-example.yaml
 ls -lh /etc/hysteria/client-uri-qr.png
+
+
+
+И основной запуск оставляй таким же:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/USER/REPO/main/install-hysteria.sh)
