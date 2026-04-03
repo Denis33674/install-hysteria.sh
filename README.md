@@ -15,7 +15,11 @@ systemctl status hysteria-server.service --no-pager -l
 ss -ulnp | grep 8443
 which hysteria
 
+```bash
 systemctl status hysteria-server.service --no-pager -l; ss -ulnp | grep 8443; which hysteria
+```
+
+
 
 
 ### Шаг 3. Запустить скрипт заново
