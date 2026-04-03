@@ -181,12 +181,14 @@ start_service() {
 
 validate_service() {
   log "Checking service state..."
+
   systemctl is-active --quiet "${SERVICE_NAME}" || {
     journalctl -u "${SERVICE_NAME}" -n 100 --no-pager -l || true
     fail "${SERVICE_NAME} is not active."
   }
 
-  ss -uln | grep -q ":${HY2_PORT}\b" || {
+  ss -ulnp | awk -v port=":${HY2_PORT}" '$5 ~ port { found=1 } END { exit(found ? 0 : 1) }' || {
+    ss -ulnp || true
     journalctl -u "${SERVICE_NAME}" -n 100 --no-pager -l || true
     fail "UDP port ${HY2_PORT} is not listening."
   }
