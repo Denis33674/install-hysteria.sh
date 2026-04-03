@@ -1,6 +1,6 @@
 # install-hysteria
 
-### Шаг 1. Полностью снести текущую установку
+### Шаг 1. Очистка сервера от предыдущих установок
 
 ```bash
 systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-server.service 2>/dev/null; rm -f /etc/systemd/system/hysteria-server.service /etc/systemd/system/hysteria-server@.service; rm -rf /etc/hysteria; rm -f /usr/local/bin/hysteria; systemctl daemon-reload; systemctl reset-failed
@@ -14,14 +14,14 @@ systemctl status hysteria-server.service --no-pager -l; ss -ulnp | grep 8443; wh
 ```
 
 
-### Шаг 3. Запустить скрипт заново
+### Шаг 3. Запустить скрипт установки Hysteria 2
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Denis33674/install-hysteria.sh/main/install-hysteria2.sh | bash
 ```
 
 
-### Шаг 4. После установки сразу проверить результат
+### Шаг 4. После установки сразу проверить результат (При желании)
 
 ```bash
 systemctl status hysteria-server.service --no-pager -l; ss -ulnp | grep 8443; journalctl -u hysteria-server.service -n 30 --no-pager -l
