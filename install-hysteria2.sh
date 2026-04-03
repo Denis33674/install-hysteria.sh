@@ -186,6 +186,15 @@ validate_service() {
     fail "${SERVICE_NAME} is not active."
   }
 
+  sleep 1
+
+  ss -ulnp | grep -Fq ":${HY2_PORT}" || {
+    ss -ulnp || true
+    journalctl -u "${SERVICE_NAME}" -n 100 --no-pager -l || true
+    fail "UDP port ${HY2_PORT} is not listening."
+  }
+}
+
   ss -ulnp | awk -v port=":${HY2_PORT}" '$5 ~ port { found=1 } END { exit(found ? 0 : 1) }' || {
     ss -ulnp || true
     journalctl -u "${SERVICE_NAME}" -n 100 --no-pager -l || true
