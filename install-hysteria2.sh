@@ -194,13 +194,6 @@ validate_service() {
   }
 }
 
-  ss -ulnp | awk -v port=":${HY2_PORT}" '$5 ~ port { found=1 } END { exit(found ? 0 : 1) }' || {
-    ss -ulnp || true
-    journalctl -u "${SERVICE_NAME}" -n 100 --no-pager -l || true
-    fail "UDP port ${HY2_PORT} is not listening."
-  }
-}
-
 collect_fingerprint() {
   log "Collecting SHA-256 certificate fingerprint..."
   HY2_FINGERPRINT="$(openssl x509 -noout -fingerprint -sha256 -in "${CERT_CRT}" | cut -d= -f2)"
