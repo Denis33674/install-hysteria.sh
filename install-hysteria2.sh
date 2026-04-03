@@ -331,26 +331,23 @@ EOF
 }
 
 main() {
-  require_root
-  require_apt_system
-  check_os
-  validate_port
-  install_packages
-  install_hysteria
-  detect_server_ip
-  generate_password
-  prepare_dirs
-  generate_certificate
-  write_server_config
-  validate_server_config
-  configure_firewall
-  start_service
-  validate_service
-  collect_fingerprint
-  write_client_example
-  build_uri
-  generate_qr
-  print_result
+require_root
+require_apt_system
+check_os
+validate_port
+install_packages
+install_hysteria
+detect_server_ip
+generate_password
+prepare_dirs
+generate_certificate
+write_server_config
+configure_firewall
+start_service
+validate_service
+collect_fingerprint
+write_client_example
+print_result
 }
 
 main "$@"
