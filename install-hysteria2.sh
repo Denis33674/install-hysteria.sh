@@ -176,7 +176,6 @@ start_service() {
   log "Starting Hysteria service..."
   systemctl daemon-reload
   systemctl enable --now "${SERVICE_NAME}"
-  systemctl restart "${SERVICE_NAME}"
 }
 
 validate_service() {
