@@ -4,6 +4,10 @@
 
 systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-server.service 2>/dev/null; rm -f /etc/systemd/system/hysteria-server.service /etc/systemd/system/hysteria-server@.service; rm -rf /etc/hysteria; rm -f /usr/local/bin/hysteria; systemctl daemon-reload; systemctl reset-failed
 
+```bash
+systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-server.service 2>/dev/null; rm -f /etc/systemd/system/hysteria-server.service /etc/systemd/system/hysteria-server@.service; rm -rf /etc/hysteria; rm -f /usr/local/bin/hysteria; systemctl daemon-reload; systemctl reset-failed
+```
+
 
 ### Шаг 2. Убедиться, что всё реально снесено
 
