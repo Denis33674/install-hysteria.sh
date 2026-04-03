@@ -2,7 +2,6 @@
 
 ### Шаг 1. Полностью снести текущую установку
 
-systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-server.service 2>/dev/null; rm -f /etc/systemd/system/hysteria-server.service /etc/systemd/system/hysteria-server@.service; rm -rf /etc/hysteria; rm -f /usr/local/bin/hysteria; systemctl daemon-reload; systemctl reset-failed
 
 ```bash
 systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-server.service 2>/dev/null; rm -f /etc/systemd/system/hysteria-server.service /etc/systemd/system/hysteria-server@.service; rm -rf /etc/hysteria; rm -f /usr/local/bin/hysteria; systemctl daemon-reload; systemctl reset-failed
@@ -11,9 +10,12 @@ systemctl stop hysteria-server.service 2>/dev/null; systemctl disable hysteria-s
 
 ### Шаг 2. Убедиться, что всё реально снесено
 
+
 systemctl status hysteria-server.service --no-pager -l
 ss -ulnp | grep 8443
 which hysteria
+
+systemctl status hysteria-server.service --no-pager -l; ss -ulnp | grep 8443; which hysteria
 
 
 ### Шаг 3. Запустить скрипт заново
